@@ -130,10 +130,8 @@ typedef struct UIScene {
   bool brakeLights;
   float angleSteersDes;
   bool steerOverride;
-  float output_scale; 
-  float cpu0Temp;
+  float output_scale;
   int batteryPercent;
-  bool batteryCharging;
   char batteryStatus[64];
   // ip addr
   char ipAddr[20];
