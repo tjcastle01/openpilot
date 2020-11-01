@@ -137,8 +137,14 @@ QWidget * device_panel() {
 
   QPushButton *clear_cal_btn = new QPushButton("Reset Calibration");
   device_layout->addWidget(clear_cal_btn);
+<<<<<<< HEAD
   QObject::connect(clear_cal_btn, &QPushButton::released,
                    [=]() { Params().delete_db_value("CalibrationParams"); });
+=======
+  QObject::connect(clear_cal_btn, &QPushButton::released, [=]() {
+    Params().delete_db_value("CalibrationParams");
+  });
+>>>>>>> gugupilot/master-ci
 
   std::map<std::string, const char *> power_btns = {
     {"Power Off", "sudo poweroff"},
@@ -154,7 +160,10 @@ QWidget * device_panel() {
 #endif
   }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> gugupilot/master-ci
   QWidget *widget = new QWidget;
   widget->setLayout(device_layout);
   widget->setStyleSheet(R"(
@@ -171,6 +180,7 @@ QWidget * developer_panel() {
   // TODO: enable SSH toggle and github keys
 
   Params params = Params();
+<<<<<<< HEAD
 
   std::string brand = params.read_db_bool("Passive") ? "dashcam" : "openpilot";
 
@@ -178,6 +188,13 @@ QWidget * developer_panel() {
     {"Version", brand + " " + params.get("Version", false)},
     {"Git Branch", params.get("GitBranch", false)},
     {"Git Commit", params.get("GitCommit", false)},
+=======
+  std::string brand = params.read_db_bool("Passive") ? "dashcam" : "openpilot";
+  std::vector<std::pair<std::string, std::string>> labels = {
+    {"Version", brand + " v" + params.get("Version", false)},
+    {"Git Branch", params.get("GitBranch", false)},
+    {"Git Commit", params.get("GitCommit", false).substr(0, 10)},
+>>>>>>> gugupilot/master-ci
     {"Panda Firmware", params.get("PandaFirmwareHex", false)},
   };
 
